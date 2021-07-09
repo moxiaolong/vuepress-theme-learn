@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.base.json",
+  "references": [
+    { "path": "./docs/.vuepress/vuepress-theme-vdoing-dram/tsconfig.build.json" }
+  ],
+  "files": []
+}

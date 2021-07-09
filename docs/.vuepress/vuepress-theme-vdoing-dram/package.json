@@ -1,0 +1,21 @@
+{
+  "name": "vuepress-theme-vdoing-dram",
+  "version": "1.0.0",
+  "keywords": [
+    "vuepress-theme"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
+  },
+  "main": "lib/node/index.js",
+  "types": "lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@vuepress/client": "^2.0.0-alpha.1",
+    "@vuepress/utils": "^2.0.0-alpha.1",
+    "cpx2": "^3.0.0"
+  }
+}
