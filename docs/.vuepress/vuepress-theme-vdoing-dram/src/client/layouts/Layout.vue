@@ -1,22 +1,28 @@
 <template>
   <div>
     <Content/>
-    <home></home>
+    <home v-if="pageFrontmatter.home"></home>
+    <Page v-else></Page>
   </div>
 </template>
 
 <script lang="ts">
 import Home from "../components/Home.vue"
-import {usePageData} from '@vuepress/client'
+import Page from "../components/Page.vue"
+import {usePageData, usePageFrontmatter} from '@vuepress/client'
+import type {DefaultThemePageFrontmatter} from "../../shared"
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-      name:"Layout",
-      components: {Home},
+      name: "Layout",
+      components: {Home, Page},
       setup() {
-       // const pageData = usePageData ()
-        console.log("setup")
-        // console.log(site)
+        // const pageData = usePageData ()
+        const pageFrontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
+
+        return {
+          pageFrontmatter
+        }
       }
     }
 )
