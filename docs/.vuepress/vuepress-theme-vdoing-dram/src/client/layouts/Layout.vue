@@ -9,15 +9,26 @@
 <script lang="ts">
 import Home from "../components/Home.vue"
 import Page from "../components/Page.vue"
-import {usePageData, usePageFrontmatter} from '@vuepress/client'
+import {usePageData, usePageFrontmatter, useSiteData, useSiteLocaleData} from '@vuepress/client'
 import type {DefaultThemePageFrontmatter} from "../../shared"
 import {defineComponent} from 'vue'
 
+const posts = __POSTS__
+
+
 export default defineComponent({
+
+
       name: "Layout",
       components: {Home, Page},
       setup() {
-        // const pageData = usePageData ()
+        console.log(posts)
+        const pageData = usePageData()
+        const siteData = useSiteData()
+        const siteLocaleData = useSiteLocaleData()
+        console.log(pageData)
+        console.log(siteData)
+        console.log(siteLocaleData)
         const pageFrontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
 
         return {
