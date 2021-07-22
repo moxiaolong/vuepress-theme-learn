@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Content/>
     <home v-if="pageFrontmatter.home"></home>
     <Page v-else></Page>
   </div>
@@ -13,8 +12,6 @@ import {usePageData, usePageFrontmatter, useSiteData, useSiteLocaleData} from '@
 import type {DefaultThemePageFrontmatter, Post} from "../../shared"
 import {defineComponent} from 'vue'
 
-const posts: Post[] = __POSTS__
-
 
 export default defineComponent({
 
@@ -23,7 +20,6 @@ export default defineComponent({
       components: {Home, Page},
       setup() {
 
-        console.log(posts)
         const pageData = usePageData()
         const siteData = useSiteData()
         const siteLocaleData = useSiteLocaleData()
