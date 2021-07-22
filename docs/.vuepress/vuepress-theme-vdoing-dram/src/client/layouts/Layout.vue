@@ -10,10 +10,10 @@
 import Home from "../components/Home.vue"
 import Page from "../components/Page.vue"
 import {usePageData, usePageFrontmatter, useSiteData, useSiteLocaleData} from '@vuepress/client'
-import type {DefaultThemePageFrontmatter} from "../../shared"
+import type {DefaultThemePageFrontmatter, Post} from "../../shared"
 import {defineComponent} from 'vue'
 
-const posts = __POSTS__
+const posts: Post[] = __POSTS__
 
 
 export default defineComponent({
@@ -22,6 +22,7 @@ export default defineComponent({
       name: "Layout",
       components: {Home, Page},
       setup() {
+
         console.log(posts)
         const pageData = usePageData()
         const siteData = useSiteData()

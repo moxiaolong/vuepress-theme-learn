@@ -1,5 +1,5 @@
 export interface Post {
-    date?: string
+    date: string
     title?: string
     excerpt?: string
     path?: string
