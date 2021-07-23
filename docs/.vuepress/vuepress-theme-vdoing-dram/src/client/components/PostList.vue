@@ -1,9 +1,8 @@
 <template>
   <div>
     postList
-    <div v-for="(item,index) in postsReactive.posts" :key="index">
-      {{ item.title }}
-    </div>
+    <post-card v-for="item in postsReactive.posts" :post="item"/>
+
     <a @click="nextPage">page++</a>
   </div>
 </template>
