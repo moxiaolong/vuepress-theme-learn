@@ -1,25 +1,23 @@
 <template>
   <div>home
-    <div v-for="item in posts">
-      {{ item.title }}
-    </div>
+    <post-list/>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+import PostList from './PostList.vue'
 import {usePageData, usePageFrontmatter, useSiteData, useSiteLocaleData} from '@vuepress/client'
-import type {DefaultThemePageFrontmatter, Post} from "../../shared"
-
-const posts: Post[] = __POSTS__
+import type {DefaultThemePageFrontmatter} from "../../shared"
 
 
 export default defineComponent({
 
-
+      components: {
+        PostList
+      },
       name: "Home",
       setup() {
-        console.log(posts)
         const pageData = usePageData()
         const siteData = useSiteData()
         const siteLocaleData = useSiteLocaleData()
@@ -30,7 +28,6 @@ export default defineComponent({
 
         return {
           pageFrontmatter
-          , posts
         }
       }
     }
