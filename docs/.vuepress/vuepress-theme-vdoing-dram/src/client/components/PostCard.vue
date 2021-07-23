@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent, PropType} from 'vue'
 import type {Post} from "../../shared";
 
 export default defineComponent({
@@ -14,8 +14,8 @@ export default defineComponent({
       name: "PostCard",
       props: {
         post: { // 菜单数据
-          type: Object as Post,
-          required: true,
+          type: Object as PropType<Post>,
+          required: true
         }
       },
 

@@ -1,14 +1,16 @@
 <template>
   <div>
     postList
-    <post-card v-for="item in posts" :post="item"/>
+    <div v-for="(item,index) in postsReactive.posts" :key="index">
+      {{ item.title }}
+    </div>
     <a @click="nextPage">page++</a>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import {useRoute} from 'vue-router'
+import {defineComponent, reactive} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
 import type {Post} from "../../shared";
 import PostCard from "./PostCard.vue";
 
@@ -21,31 +23,43 @@ export default defineComponent({
         PostCard
       },
       setup() {
-        let router = useRoute();
+        let route = useRoute();
+        let router = useRouter();
 
         let pageNum = 1
         let pageSize = 10
-        let posts
+        let postsReactive: { posts: Post[] } = reactive({posts: []})
 
-        if (pageNum.toString() !== router.query.p) {
-          pageNum = router.query.p
+
+        //从路由获取页码
+        if (route.query.p != null && pageNum.toString() !== route.query.p) {
+          pageNum = route.query.p
         }
 
 
+        //刷新页面
         let flushPage = () => {
-          posts = sourcePosts.slice((pageNum - 1) * pageSize, pageNum * pageSize)
+          //根据编码截取数组
+          postsReactive.posts = sourcePosts.slice((pageNum - 1) * pageSize, pageNum * pageSize)
 
+          //路由跳转
+          router.push({
+            query: {
+              ...route.query,
+              p: pageNum
+            }
+          })
         }
+
         flushPage()
+
         let nextPage = () => {
           pageNum++
-          console.log(pageNum)
           flushPage()
-          console.log(posts)
         }
 
 
-        return {posts, pageNum, nextPage}
+        return {postsReactive, pageNum, nextPage}
       },
 
     }
