@@ -21,9 +21,7 @@ export default defineComponent({
         const pageData = usePageData()
         const siteData = useSiteData()
         const siteLocaleData = useSiteLocaleData()
-        console.log(pageData)
-        console.log(siteData)
-        console.log(siteLocaleData)
+
         const pageFrontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
 
         return {

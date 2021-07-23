@@ -1,7 +1,7 @@
 <template>
   <div>
     postcard
-    {{ post.date }}
+    {{ post.title }}
   </div>
 </template>
 
@@ -23,7 +23,6 @@ export default defineComponent({
 
         let post = props.post;
 
-        console.log(post)
         return {
           post
         }
