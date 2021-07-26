@@ -8,6 +8,10 @@ const fooTheme: Theme = () => {
     let posts: Post[] = []
     return {
 
+        plugins: [
+            ['@vuepress/palette', {preset: 'sass'}]
+        ],
+
         //该 Hook 会在 VuePress App 完成文件准备后被立即调用。
         onPrepared: (app) => {
             posts.sort((a, b) => {
